@@ -30,13 +30,10 @@
         <h1> List Students </h1>
     </div>
 
-        <div class="row">
-            <div class="col-lg-3">
-            <a th:href = "@{/student/new}" class="btn btn-primary btn-sm mb-3"> Add Student </a>
-            </div>
-            <div class="col-lg-3">
-                <a th:href = "@{/student/delete}" class="btn btn-primary btn-sm mb-3"> Delete Student </a>
-            </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/student/new}" class="btn btn-primary btn-sm mb-3"> Add Student </a>
+        </div>
     </div>
 
 
@@ -51,11 +48,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each ="student: ${students}">
-            <td th:text = "${student.firstName}"></td>
-            <td th:text = "${student.middleName}"</td>
-            <td th:text = "${student.lastName}"></td>
-            <td th:text = "${student.email}"></td>
+        <tr th:each="student: ${students}">
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.middleName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.email}"></td>
+            <td>
+                <form th:action="@{/student/delete/{id}(id=${student.id})}"  th:method="POST">
+                    <button type="submit" class="btn btn-primary">
+                        DELETE
+                    </button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

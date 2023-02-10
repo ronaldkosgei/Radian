@@ -6,11 +6,11 @@ import com.java.studentmanagementsystem.entity.Student;
 import java.util.List;
 
 public interface StudentService {
-    default List<Student> getAllStudents() {
-        return null;
-    }
+     List<Student> getAllStudents();
 
-    default Student saveStudent(Student student) {
-        return null;
-    }
+     Student saveStudent(Student student);
+
+     void deleteStudentById(Long id);
+
+     List<Student> update(Long id);
 }

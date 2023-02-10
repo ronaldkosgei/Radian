@@ -19,7 +19,7 @@ public class StudentController {
     @PostMapping("students")
     public String saveStudent(@ModelAttribute("student")Student student){
         studentService.saveStudent(student);
-        return "redirect:/students";
+        return "redirect:/student/students";
     }
 
     @GetMapping("students")
@@ -35,10 +35,15 @@ public class StudentController {
         return "create_student";
     }
 
-    @DeleteMapping("delete")
-    public String deleteStudent(Model model){
-        Student student = new Student();
-        model.addAttribute("student", student);
-        return "delete_student";
+    @PostMapping("delete/{id}")
+    public String deleteStudentById(@PathVariable Long id){
+        studentService.deleteStudentById(id);
+        return "redirect:/student/students";
+    }
+
+    @PatchMapping("update")
+    public String updateStudentById(@PathVariable Long id){
+        studentService.update(id);
+                return "update_student";
     }
 }

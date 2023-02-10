@@ -1,10 +1,13 @@
 package com.Transaction.entity;
 
 
-@Entity(name = "servicesOrFoods")
-public class ServicesOrFood {
+import jakarta.persistence.*;
 
-    public ServicesOrFood(){
+@Entity
+@Table(name = "food")
+public class Food {
+
+    public Food(){
 
     }
 
@@ -12,10 +15,25 @@ public class ServicesOrFood {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
     String name;
+
+    @Column(name = "quantity")
     String quantity;
+
+    @Column(name = "price")
     Double price;
+
+    @Column(name = "description")
     String description;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
